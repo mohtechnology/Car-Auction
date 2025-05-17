@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Add Car{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Add Car</h1>
+    <form method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %} 
+        <div class="mb-3">
+            <label for="title" class="form-label">Car Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="starting_bid" class="form-label">Starting Bid</label>
+            <input type="number" class="form-control" id="starting_bid" name="starting_bid" required>
+        </div>
+        <div class="mb-3">
+            <label for="auction_end" class="form-label">Auction End Time</label>
+            <input type="datetime-local" class="form-control" id="auction_end" name="auction_end" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Car Image</label>
+            <input type="file" class="form-control" id="image" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Car</button>
+    </form>
+
+</div>
+
+{% endblock %}

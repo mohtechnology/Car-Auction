@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>Car Auctions</h1>
+    <div class="row">
+        {% for car in cars %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ car.image.url }}" class="card-img-top" alt="{{ car.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.title }}</h5>
+                    <p class="card-text">{{ car.description|truncatechars:100 }}</p>
+                    <p class="card-text"><strong>Starting Bid:</strong> ${{ car.starting_bid }}</p>
+                    <p class="card-text"><strong>Auction Ends:</strong> {{ car.end_auction }}</p>
+                    <a href="{% url "car_detail" car.id %}" class="btn btn-success">View Details</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No cars are currently up for auction. List one now!</a></p>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}
